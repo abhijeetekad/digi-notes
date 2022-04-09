@@ -1,5 +1,7 @@
+import { useTheme } from "@emotion/react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import { MainPageNotes } from "./Components/MainPageNotes/MainPageNotes";
 import { Archive } from "./Pages/Archive/Archive";
 import { HomePage } from "./Pages/HomePage/HomePage";
 import { Labels } from "./Pages/Labels/Labels";
@@ -9,13 +11,18 @@ import { SignUp } from "./Pages/SignUp/SignUp";
 import { Trash } from "./Pages/Trash/Trash";
 
 function App() {
+  const { theme } = useTheme();
   return (
-    <div className="App">
+    <div className="App ">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="signin" element={<SignIn />} />
         <Route path="signup" element={<SignUp />} />
-        <Route exact path="mainpage" element={<MainPage />} />
+        <Route
+          exact
+          path="mainpage"
+          element={<MainPage page={<MainPageNotes />} />}
+        />
         <Route
           path="mainpage/archive"
           element={<MainPage page={<Archive />} />}

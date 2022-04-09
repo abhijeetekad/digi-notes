@@ -3,9 +3,10 @@
   height: 5rem;
   border: 1px solid black;
   position: fixed;
-  overflow: hidden;
+  top: 0;
   background-color: var(--background-color);
   z-index: 10;
+  /* padding: 1rem; */
 }
 .navbar p {
   font-size: 1rem;

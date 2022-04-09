@@ -14,9 +14,14 @@ function MainPage({ page }) {
         </nav>
         <main>
           <div className="mainPageContent">
-            <SideBarLeft />
-            <div>{page}</div>
-            <SideBarRight />
+            <div>
+              <SideBarLeft />
+            </div>
+
+            <div className="common-notes">{page}</div>
+            <div>
+              <SideBarRight />
+            </div>
           </div>
         </main>
 

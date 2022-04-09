@@ -10,3 +10,10 @@ main {
   display: flex;
   justify-content: space-between;
 }
+.common-notes {
+  height: 100vh;
+  margin-top: 5rem;
+  background-color: red;
+  width: 70%;
+  padding-top: 30px;
+}

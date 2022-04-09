@@ -1,17 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import "./SideBarRight.css";
 function SideBarRight() {
   return (
-    <div>
+    <div className="sidebar-right">
       <div>
-        <Link to="/mainpage/archive">Archive</Link>
+        <Link className="link" to="/mainpage/archive">
+          Archive
+        </Link>
       </div>
       <div>
-        <Link to="/mainpage/label">Label</Link>
+        <Link className="link" to="/mainpage/label">
+          Label
+        </Link>
       </div>
       <div>
-        <Link to="/mainpage/trash">trash</Link>
+        <Link className="link" to="/mainpage/trash">
+          trash
+        </Link>
       </div>
     </div>
   );
