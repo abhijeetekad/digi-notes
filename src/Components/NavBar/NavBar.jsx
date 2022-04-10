@@ -8,8 +8,9 @@ import { Link } from "react-router-dom";
 import { useTheme } from "../../Contexts/Theme-context.jsx";
 function NavBar() {
   const { theme, themeToggle } = useTheme();
+  console.log(theme);
   return (
-    <div className="navbar">
+    <div className={`navbar ${theme === "dark" ? "dark-mode" : "light-theme"}`}>
       <div className="nav-header">
         <div className="nav-logo">
           <label>

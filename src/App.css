@@ -10,10 +10,6 @@ body {
   text-decoration: none;
   color: var(--color);
 }
-body {
-  background-color: var(--background-color);
-  color: var(--color);
-}
 
 .dark-mode {
   --background-color: #15141a;
@@ -22,4 +18,8 @@ body {
 .light-theme {
   --background-color: #ffffff;
   --color: #222831;
+}
+body {
+  background-color: var(--background-color);
+  color: var(--color);
 }
