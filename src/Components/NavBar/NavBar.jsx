@@ -30,7 +30,12 @@ function NavBar() {
             </button>
           </div>
           <div className="sc-nav-options">
-            <p>Log in</p>
+            <p>
+              <Link to="/signin">Sign in</Link>
+            </p>
+            <p>
+              <Link to="/signup">Sign up</Link>
+            </p>
             <label>
               <MenuIcon />
             </label>

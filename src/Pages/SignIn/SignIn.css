@@ -1,0 +1,14 @@
+.login-flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.login-flex-row a {
+  text-decoration: none;
+}
+.login-flex-row a:hover {
+  opacity: 0.8;
+}
+.login-flex-row p {
+  color: var(--header-backgroundColor);
+}
