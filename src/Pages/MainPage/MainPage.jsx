@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+
 import { Footer } from "../../Components/Footer/Footer";
 import { NavBar } from "../../Components/NavBar/NavBar";
 import { SideBarRight } from "../../Components/SideBaRight/SideBarRight";
@@ -17,7 +17,6 @@ function MainPage({ page }) {
             <div>
               <SideBarLeft />
             </div>
-
             <div className="common-notes">{page}</div>
             <div>
               <SideBarRight />

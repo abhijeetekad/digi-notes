@@ -8,8 +8,9 @@ import { Link } from "react-router-dom";
 import { useTheme } from "../../Contexts/Theme-context.jsx";
 function NavBar() {
   const { theme, themeToggle } = useTheme();
+  console.log(theme);
   return (
-    <div className="navbar">
+    <div className={`navbar ${theme === "dark" ? "dark-mode" : "light-theme"}`}>
       <div className="nav-header">
         <div className="nav-logo">
           <label>
@@ -29,7 +30,12 @@ function NavBar() {
             </button>
           </div>
           <div className="sc-nav-options">
-            <p>Log in</p>
+            <p>
+              <Link to="/signin">Sign in</Link>
+            </p>
+            <p>
+              <Link to="/signup">Sign up</Link>
+            </p>
             <label>
               <MenuIcon />
             </label>

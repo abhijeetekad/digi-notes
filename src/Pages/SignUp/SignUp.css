@@ -1,0 +1,91 @@
+.signUp-container {
+  align-items: center;
+  padding: 5rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  background-color: #1d1b1b;
+}
+.signUp-container p {
+  font-weight: bold;
+}
+.signUp-container form {
+  width: 35rem;
+  padding: 2rem;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px;
+}
+.signUp-container input {
+  border: 2px solid #dfdfdf;
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0.5rem 0rem;
+}
+.signUp-container input:hover {
+  border: 2px solid var(--header-backgroundColor);
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.checkbox {
+  margin-left: 0rem;
+}
+.flex-row-check {
+  display: flex;
+  align-items: center;
+}
+.form-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 2rem 0rem;
+}
+.sign-name {
+  display: flex;
+  gap: 1rem;
+}
+.sign-mail input {
+  width: 100%;
+}
+.sign-password input {
+  width: 100%;
+}
+.flex-row-check input {
+  margin-right: 0.5rem;
+}
+.required:after {
+  content: " *";
+  color: red;
+}
+.sign-btn {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: none;
+  background-color: var(--header-backgroundColor);
+  color: var(--header-Color);
+  cursor: pointer;
+}
+.sign-btn:hover {
+  opacity: 0.6;
+}
+.flex-row p:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+.flex-row a {
+  text-decoration: none;
+  color: var(--header-backgroundColor);
+}
+@media screen and (max-width: 780px) {
+  .signUp-container form {
+    width: 20rem;
+  }
+  .sign-name {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+  }
+  .sign-name input {
+    width: 100%;
+  }
+}
