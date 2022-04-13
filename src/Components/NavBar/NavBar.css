@@ -48,6 +48,12 @@
   padding: 5px;
   cursor: pointer;
 }
+.userProfile {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  cursor: pointer;
+}
 
 .nav-header label {
   cursor: pointer;

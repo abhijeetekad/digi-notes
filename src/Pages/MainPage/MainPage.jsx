@@ -4,8 +4,10 @@ import { Footer } from "../../Components/Footer/Footer";
 import { NavBar } from "../../Components/NavBar/NavBar";
 import { SideBarRight } from "../../Components/SideBaRight/SideBarRight";
 import { SideBarLeft } from "../../Components/SideBarLeft/SideBarLeft";
+import { useSidebar } from "../../Contexts/Sidebar-context";
 import "./MainPage.css";
 function MainPage({ page }) {
+  const { sidebarLeft, sidebarRight } = useSidebar();
   return (
     <div>
       <div className="mainPage">
@@ -17,7 +19,16 @@ function MainPage({ page }) {
             <div>
               <SideBarLeft />
             </div>
-            <div className="common-notes">{page}</div>
+            <div
+              style={{
+                paddingLeft: !sidebarLeft ? "1rem" : "",
+                marginRight: !sidebarRight ? "0rem" : "",
+                // paddingRight: !sidebarRight ? "0rem" : "",
+              }}
+              className="common-notes"
+            >
+              {page}
+            </div>
             <div>
               <SideBarRight />
             </div>
