@@ -27,7 +27,7 @@ const NoteProvider = ({ children }) => {
     const response = await updateNoteServices(id, note, authToken);
     setNoteList(response);
   };
-
+  console.log(noteList);
   return (
     <NoteContext.Provider
       value={{
