@@ -35,9 +35,9 @@ function MainPage({ page }) {
           </div>
         </main>
 
-        <footer>
+        {/* <footer>
           <Footer />
-        </footer>
+        </footer> */}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 .mainPage {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 main {
   flex-grow: 1;
@@ -13,7 +13,7 @@ main {
 .common-notes {
   height: 100vh;
   margin-top: 5rem;
-  background-color: red;
+  /* background-color: red; */
   width: 70%;
   padding-top: 30px;
   flex-grow: 1;

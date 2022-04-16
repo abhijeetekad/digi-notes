@@ -1,0 +1,100 @@
+.formContainer {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 80%;
+  margin: auto;
+  position: relative;
+  margin-bottom: 2rem;
+}
+.form-catageory {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.form-details {
+  color: var(--background-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-color: #ccc;
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+}
+.input-title {
+  width: 15rem;
+}
+.input-title {
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  height: 2rem;
+  flex-grow: 1;
+}
+.form-input {
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  height: 5rem;
+  flex-grow: 1;
+}
+.form-btn {
+  position: absolute;
+  bottom: 0;
+  right: 1rem;
+  margin: 1rem;
+}
+.formBtn {
+  background-color: var(--background-color);
+  color: var(--color);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 0.3rem;
+}
+.categoryBtn {
+  background-color: var(--background-color);
+  color: var(--color);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 0.3rem;
+}
+
+.form-label {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.colorPalette {
+  background-color: rgb(19, 18, 18);
+  width: 4rem;
+  gap: 0.5rem;
+  height: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  cursor: pointer;
+  padding: 0.5rem;
+  box-shadow: inset 0 0 5px #ffffff;
+}
+.colorPaletteBtn {
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 780px) {
+  .form-details {
+    font-size: 0.8rem;
+  }
+  .form-label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}
