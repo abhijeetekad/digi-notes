@@ -8,7 +8,7 @@ import { addNoteService } from "../../Services/NotesServices/addNoteServices";
 function NewNote() {
   const { noteState, dispatchNote, setNoteList } = useNote();
   const { auth } = useAuth();
-  // console.log(auth);
+
   const [isExtended, setExtended] = useState(false);
   const [tempNote, setTeampNote] = useState(noteState);
 
