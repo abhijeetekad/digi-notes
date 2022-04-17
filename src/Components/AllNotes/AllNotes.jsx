@@ -7,7 +7,6 @@ function AllNotes() {
 
   return (
     <div>
-      {" "}
       <div>all notes</div>
       <div className="all-notes">
         {noteList.map((item) => {

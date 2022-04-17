@@ -1,3 +1,6 @@
+import { addNoteToArchive } from "../Services/NotesServices/addNoteToArchive";
+import { unarchiveNote } from "../Services/NotesServices/unarchiveNote";
+
 import { updateNoteServices } from "../Services/NotesServices/updateNoteServices";
 
 const { createContext, useContext, useReducer, useState } = require("react");
@@ -22,12 +25,23 @@ const initialValues = {
 const NoteProvider = ({ children }) => {
   const [noteState, dispatchNote] = useReducer(NoteReducer, initialValues);
   const [noteList, setNoteList] = useState([]);
+  const [archiveList, setArchiveList] = useState([]);
 
   const updateNoteHandler = async (id, note, authToken) => {
     const response = await updateNoteServices(id, note, authToken);
     setNoteList(response);
   };
-  console.log(noteList);
+  const archiveNoteHandler = async (id, note, authToken) => {
+    const response = await addNoteToArchive(id, note, authToken);
+    setArchiveList(response.archives);
+    setNoteList(response.notes);
+  };
+  const unarchiveNoteHandler = async (id, note, authToken) => {
+    const response = await unarchiveNote(id, note, authToken);
+    setArchiveList(response.archives);
+    setNoteList(response.notes);
+  };
+  console.log(archiveList);
   return (
     <NoteContext.Provider
       value={{
@@ -36,6 +50,9 @@ const NoteProvider = ({ children }) => {
         noteList,
         setNoteList,
         updateNoteHandler,
+        archiveNoteHandler,
+        archiveList,
+        unarchiveNoteHandler,
       }}
     >
       {children}
