@@ -1,4 +1,5 @@
 import { addNoteToArchive } from "../Services/NotesServices/addNoteToArchive";
+import { deleteNoteServices } from "../Services/NotesServices/deleteNote";
 import { unarchiveNote } from "../Services/NotesServices/unarchiveNote";
 
 import { updateNoteServices } from "../Services/NotesServices/updateNoteServices";
@@ -20,6 +21,7 @@ const initialValues = {
   title: "",
   descreption: "",
   notePinned: false,
+  trashNotes: false,
 };
 
 const NoteProvider = ({ children }) => {
@@ -41,7 +43,11 @@ const NoteProvider = ({ children }) => {
     setArchiveList(response.archives);
     setNoteList(response.notes);
   };
-  console.log(archiveList);
+  const deleteNoteHandler = async (id, authToken) => {
+    const response = await deleteNoteServices(id, authToken);
+    setNoteList(response);
+  };
+
   return (
     <NoteContext.Provider
       value={{
@@ -53,6 +59,7 @@ const NoteProvider = ({ children }) => {
         archiveNoteHandler,
         archiveList,
         unarchiveNoteHandler,
+        deleteNoteHandler,
       }}
     >
       {children}

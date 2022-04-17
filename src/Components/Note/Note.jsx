@@ -41,12 +41,13 @@ function Note({ note }) {
         <div className="note-footer">
           {/* <p>Date: {item.date}</p> */}
           <span
-            // onClick={() =>
-            //   dispatchNoteData({
-            //     type: "MOVE_TO_RECYCLE_BIN",
-            //     payload: item,
-            //   })
-            // }
+            onClick={() =>
+              updateNoteHandler(
+                _id,
+                { ...updateNoteHandler, trashNotes: true },
+                auth.authToken
+              )
+            }
             className="delete-icon"
           >
             <DeleteIcon />
