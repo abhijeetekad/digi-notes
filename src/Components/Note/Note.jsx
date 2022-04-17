@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import PushPinIcon from "@mui/icons-material/PushPin";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ArchiveIcon from "@mui/icons-material/Archive";
+import UnarchiveIcon from "@mui/icons-material/Unarchive";
+
 import "./Note.css";
 import { useNote } from "../../Contexts/Note-context";
 import { useAuth } from "../../Contexts/Auth-context";
@@ -9,7 +11,7 @@ import { useAuth } from "../../Contexts/Auth-context";
 function Note({ note }) {
   const { auth } = useAuth();
   const { title, descreption, notePinned, _id, tags } = note;
-  const { updateNoteHandler } = useNote();
+  const { updateNoteHandler, archiveNoteHandler } = useNote();
   const { updatedNote, setUpdatedNote } = useState(note);
   return (
     <div>
@@ -49,13 +51,9 @@ function Note({ note }) {
           >
             <DeleteIcon />
           </span>
+
           <span
-            // onClick={() =>
-            //   dispatchNoteData({
-            //     type: "MOVE_TO_ARCHIVE",
-            //     payload: item,
-            //   })
-            // }
+            onClick={() => archiveNoteHandler(_id, updatedNote, auth.authToken)}
             className="archive-icon"
           >
             <ArchiveIcon />
