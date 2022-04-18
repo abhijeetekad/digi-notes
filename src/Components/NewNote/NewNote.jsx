@@ -76,20 +76,20 @@ function NewNote() {
 
         {isExtended && (
           <div className="form-label">
-            {/* <select required className="form-details">
-              {priority.map((item) => (
+            <select required className="form-details">
+              {noteState.label.map((item) => (
                 <option required value={item}>
                   {item}
                 </option>
               ))}
             </select>
             <select required className="form-details">
-              {newArrLabel.map((item) => (
+              {noteState.priority.map((item) => (
                 <option required value={item}>
                   {item}
                 </option>
               ))}
-            </select> */}
+            </select>
 
             {/* <input
               className="form-details"

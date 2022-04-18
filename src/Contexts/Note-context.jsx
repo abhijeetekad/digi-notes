@@ -22,6 +22,8 @@ const initialValues = {
   descreption: "",
   notePinned: false,
   trashNotes: false,
+  label: ["work", "home", "school"],
+  priority: ["High", "medium", "low"],
 };
 
 const NoteProvider = ({ children }) => {
@@ -47,7 +49,7 @@ const NoteProvider = ({ children }) => {
     const response = await deleteNoteServices(id, authToken);
     setNoteList(response);
   };
-
+  console.log(noteState);
   return (
     <NoteContext.Provider
       value={{
