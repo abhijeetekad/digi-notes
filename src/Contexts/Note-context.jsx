@@ -13,6 +13,12 @@ const NoteReducer = (state, action) => {
       return { ...state, title: action.payload };
     case "NOTE_DESCREPTION":
       return { ...state, descreption: action.payload };
+    case "SELECTED_NOTE":
+      return { ...state, selectedLabel: action.payload };
+    case "SELECTED_PRIORITY":
+      return { ...state, selectedPriority: action.payload };
+    case "NOTE_COLOR":
+      return { ...state, noteColor: action.payload };
     case "CLEAR_FIELDS":
       return { ...state, title: "", descreption: "" };
   }
@@ -22,8 +28,11 @@ const initialValues = {
   descreption: "",
   notePinned: false,
   trashNotes: false,
-  label: ["work", "home", "school"],
-  priority: ["High", "medium", "low"],
+  label: ["Work", "Home", "School"],
+  selectedLabel: "Work",
+  priority: ["High", "Medium", "Low"],
+  selectedPriority: "High",
+  noteColor: "red",
 };
 
 const NoteProvider = ({ children }) => {
@@ -49,7 +58,8 @@ const NoteProvider = ({ children }) => {
     const response = await deleteNoteServices(id, authToken);
     setNoteList(response);
   };
-  console.log(noteState);
+  console.log(noteList);
+
   return (
     <NoteContext.Provider
       value={{

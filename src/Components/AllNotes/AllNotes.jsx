@@ -4,7 +4,7 @@ import "./AllNotes.css";
 import { Note } from "../Note/Note";
 function AllNotes() {
   const { noteList } = useNote();
-
+  // console.log(noteList);
   return (
     <div>
       <div>all notes</div>
