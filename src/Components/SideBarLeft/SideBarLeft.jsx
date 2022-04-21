@@ -9,8 +9,10 @@ function SideBarLeft() {
     <div>
       {sidebarLeft && (
         <div className="sidebar-left ">
-          <div>Filters</div>
-          <div>Add new notes</div>
+          <div className="main-taks">
+            <span>Filters</span>
+            <span>Add new notes</span>
+          </div>
         </div>
       )}
     </div>

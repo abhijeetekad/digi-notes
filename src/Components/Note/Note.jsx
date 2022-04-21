@@ -7,7 +7,7 @@ import "./Note.css";
 import { useNote } from "../../Contexts/Note-context";
 import { useAuth } from "../../Contexts/Auth-context";
 import ColorLensIcon from "@mui/icons-material/ColorLens";
-import { Modal } from "@mui/material";
+import { Modal } from "../../Components/Modal/Modal";
 import EditIcon from "@mui/icons-material/Edit";
 
 function Note({ note }) {
@@ -16,8 +16,7 @@ function Note({ note }) {
     title,
     descreption,
     notePinned,
-    // _id,
-    tags,
+    _id,
     createdAt,
     selectedLabel,
     selectedPriority,
@@ -25,8 +24,8 @@ function Note({ note }) {
     setNoteList,
   } = note;
 
-  const { updateNoteHandler, archiveNoteHandler, dispatchNote } = useNote();
-  const { updatedNote, setUpdatedNote } = useState(note);
+  const { updateNoteHandler, archiveNoteHandler } = useNote();
+  const [updatedNote, setUpdatedNote] = useState(note);
   const [isModal, setIsModal] = useState(false);
 
   // const [showPalette, setShowPallete] = useState(false);
@@ -39,27 +38,26 @@ function Note({ note }) {
 
   return (
     <div>
+      {isModal && (
+        <Modal
+          currentNote={note}
+          setIsModal={setIsModal}
+          isModal={isModal}
+          updatedNote={updatedNote}
+          setUpdatedNote={setUpdatedNote}
+        />
+      )}
       <div style={{ backgroundColor: `${noteColor}` }} className="note-card">
-        {isModal && (
-          <Modal
-            currentNote={note}
-            setIsModal={setIsModal}
-            isModal={isModal}
-            updatedNote={updatedNote}
-            setUpdatedNote={setUpdatedNote}
-          />
-        )}
-
         <span className="delete-icon">
           <div
             style={{ color: notePinned ? "black" : "white" }}
-            // onClick={() => {
-            //   updateNoteHandler(
-            //     _id,
-            //     { ...updatedNote, notePinned: !notePinned },
-            //     auth.authToken
-            //   );
-            // }}
+            onClick={() => {
+              updateNoteHandler(
+                _id,
+                { ...updatedNote, notePinned: !notePinned },
+                auth.authToken
+              );
+            }}
           >
             <PushPinIcon />
           </div>
@@ -69,34 +67,34 @@ function Note({ note }) {
           <div className="category">{selectedLabel}</div>
         </div>
 
-        <h4 className="note-title"> {note.title}</h4>
-        <p className="note-descreption">{note.descreption}</p>
+        <h4 className="note-title"> {title}</h4>
+        <p className="note-descreption">{descreption}</p>
 
         <div className="note-footer">
           {moment(createdAt).format("DD/MM/YYYY, h:mm a")}
-          <span onClick={() => setIsModal((modal) => !modal)}>
+          <span onClick={() => setIsModal((isModal) => !isModal)}>
             <EditIcon />
           </span>
           <span
-            // onClick={() =>
-            //   updateNoteHandler(
-            //     _id,
-            //     { ...updateNoteHandler, trashNotes: true },
-            //     auth.authToken
-            //   )
-            // }
+            onClick={() =>
+              updateNoteHandler(
+                _id,
+                { ...updateNoteHandler, trashNotes: true },
+                auth.authToken
+              )
+            }
             className="delete-icon"
           >
             <DeleteIcon />
           </span>
 
           <span
-            // onClick={() => archiveNoteHandler(_id, updatedNote, auth.authToken)}
+            onClick={() => archiveNoteHandler(_id, updatedNote, auth.authToken)}
             className="archive-icon"
           >
             <ArchiveIcon />
           </span>
-          <div className="ColorLensIcon">
+          {/* <div className="ColorLensIcon">
             <span
               style={{ color: "black" }}
               onClick={() => paletteModel((showPalette) => !showPalette)}
@@ -139,7 +137,7 @@ function Note({ note }) {
                 </div>
               )}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

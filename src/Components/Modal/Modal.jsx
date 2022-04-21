@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth } from "../../Contexts/Auth-context";
 import { useNote } from "../../Contexts/Note-context";
 import "./Modal.css";
-import moment from "moment";
+// import moment from "moment";
 import PushPinIcon from "@mui/icons-material/PushPin";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ArchiveIcon from "@mui/icons-material/Archive";
+import ColorLensIcon from "@mui/icons-material/ColorLens";
 
 const Modal = ({
   currentNote,
@@ -15,8 +16,18 @@ const Modal = ({
   setUpdatedNote,
 }) => {
   const { updateNoteHandler } = useNote();
-  const { auth } = useAuth();
-  // const { _id } = currentNote;
+  const {
+    auth: { authToken },
+  } = useAuth();
+
+  const [showPalette, setShowPallete] = useState(false);
+  const paletteModel = () => {
+    setShowPallete(!showPalette);
+  };
+  const updateColor = (color) => {
+    dispatchNote({ type: "NOTE_COLOR", payload: color });
+  };
+  const { _id } = currentNote;
   console.log(updatedNote);
   return (
     <div>
@@ -27,7 +38,7 @@ const Modal = ({
               className="form-input2"
               name="title"
               placeholder="Title"
-              // value={updatedNote.title}
+              value={updatedNote.title}
               onChange={(e) =>
                 setUpdatedNote({ ...updatedNote, title: e.target.value })
               }
@@ -37,7 +48,7 @@ const Modal = ({
               name="description"
               className="form-input2"
               placeholder="Take a Note"
-              // value={updatedNote.descreption}
+              value={updatedNote.descreption}
               onChange={(e) =>
                 setUpdatedNote({
                   ...updatedNote,
@@ -54,7 +65,8 @@ const Modal = ({
             <button
               className="formBtn2"
               onClick={() => {
-                addNoteHandler(auth.authToken);
+                updateNoteHandler(_id, { ...updatedNote }, authToken);
+                setIsModal(false);
               }}
             >
               Update Note
@@ -62,21 +74,18 @@ const Modal = ({
           </div>
 
           <div className="form-catageory2">
-            <select
+            {/* <select
               onChange={(e) =>
                 setUpdatedNote({
                   ...updatedNote,
                   label: e.target.value,
                 })
               }
-              required
               className="form-details2"
             >
-              {/* {noteState.label.map((item) => (
-                <option required value={item}>
-                  {item}
-                </option>
-              ))} */}
+              {updatedNote.label.map((item) => (
+                <option value={item}>{item}</option>
+              ))}
             </select>
             <select
               onChange={(e) =>
@@ -85,85 +94,95 @@ const Modal = ({
                   priority: e.target.value,
                 })
               }
-              required
               className="form-details2"
             >
-              {/* {noteState.priority.map((item) => (
-                <option required value={item}>
-                  {item}
-                </option>
-              ))} */}
-            </select>
+              {updatedNote.priority.map((item) => (
+                <option value={item}>{item}</option>
+              ))}
+            </select> */}
             <div className="note-footer2">
               {/* {moment(createdAt).format("DD/MM/YYYY, h:mm a")} */}
               {/* <span onClick={() => setIsModal((modal) => !modal)}>
                 <EditIcon />
               </span> */}
               <span
-                onClick={() =>
-                  updateNoteHandler(
-                    _id,
-                    { ...updateNoteHandler, trashNotes: true },
-                    auth.authToken
-                  )
-                }
+                onClick={() => {
+                  setUpdatedNote({
+                    ...updatedNote,
+                    notePinned: !updatedNote.notePinned,
+                  });
+                }}
                 className="delete-icon2"
               >
-                <DeleteIcon />
+                <PushPinIcon />
               </span>
 
               <span
-                onClick={() =>
-                  archiveNoteHandler(_id, updatedNote, auth.authToken)
-                }
+                // onClick={() => {
+                //   setUpdatedNote({
+                //     ...updatedNote,
+                //     notePinned: !updatedNote.notePinned,
+                //   });
+                // }}
                 className="archive-icon2"
               >
                 <ArchiveIcon />
               </span>
-              {/* <div className="ColorLensIcon">
-            <span
-              style={{ color: "black" }}
-              onClick={() => paletteModel((showPalette) => !showPalette)}
-            >
-              <ColorLensIcon />
-            </span>
-            <div className="palette">
-              {showPalette && (
-                <div className="colorPalette">
-                  <button
-                    onClick={() => updateColor("red")}
-                    style={{ backgroundColor: "red" }}
-                    className="colorPaletteBtn"
-                  ></button>
-                  <button
-                    onClick={() => updateColor("violet")}
-                    style={{ backgroundColor: "violet" }}
-                    className="colorPaletteBtn"
-                  ></button>
-                  <button
-                    onClick={() => updateColor("yellow")}
-                    style={{ backgroundColor: "yellow" }}
-                    className="colorPaletteBtn"
-                  ></button>
-                  <button
-                    onClick={() => updateColor("blue")}
-                    style={{ backgroundColor: "blue" }}
-                    className="colorPaletteBtn"
-                  ></button>
-                  <button
-                    onClick={() => updateColor("orange")}
-                    style={{ backgroundColor: "orange" }}
-                    className="colorPaletteBtn"
-                  ></button>
-                  <button
-                    onClick={() => updateColor("green")}
-                    style={{ backgroundColor: "green" }}
-                    className="colorPaletteBtn"
-                  ></button>
+              <div className="ColorLensIcon">
+                <span
+                  style={{ color: "black" }}
+                  onClick={() => paletteModel((showPalette) => !showPalette)}
+                >
+                  <ColorLensIcon />
+                </span>
+                <div className="palette">
+                  {showPalette && (
+                    <div className="colorPalette">
+                      <button
+                        onClick={() => {
+                          setUpdatedNote({
+                            noteColor: "red",
+                          });
+                        }}
+                        // onClick={() => updateColor("red")}
+                        style={{ backgroundColor: "red" }}
+                        className="colorPaletteBtn"
+                      ></button>
+                      <button
+                        onClick={() => {
+                          setUpdatedNote({
+                            ...updatedNote,
+                            noteColor: "violet",
+                          });
+                        }}
+                        // onClick={() => updateColor("violet")}
+                        style={{ backgroundColor: "violet" }}
+                        className="colorPaletteBtn"
+                      ></button>
+                      <button
+                        onClick={() => updateColor("yellow")}
+                        style={{ backgroundColor: "yellow" }}
+                        className="colorPaletteBtn"
+                      ></button>
+                      <button
+                        onClick={() => updateColor("blue")}
+                        style={{ backgroundColor: "blue" }}
+                        className="colorPaletteBtn"
+                      ></button>
+                      <button
+                        onClick={() => updateColor("orange")}
+                        style={{ backgroundColor: "orange" }}
+                        className="colorPaletteBtn"
+                      ></button>
+                      <button
+                        onClick={() => updateColor("green")}
+                        style={{ backgroundColor: "green" }}
+                        className="colorPaletteBtn"
+                      ></button>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          </div> */}
+              </div>
             </div>
           </div>
         </div>

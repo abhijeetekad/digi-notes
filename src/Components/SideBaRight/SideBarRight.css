@@ -11,3 +11,22 @@
   flex-direction: column;
   align-items: center;
 }
+.main-taks span {
+  color: var(--color);
+  display: block;
+  width: 100%;
+  line-height: 4rem;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: 0.5s;
+  transition-property: background;
+  font-size: 18px;
+  font-weight: 600;
+}
+.sideBar-items {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1.5rem;
+  padding-left: 0.5rem;
+}

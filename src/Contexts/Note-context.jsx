@@ -58,7 +58,6 @@ const NoteProvider = ({ children }) => {
     const response = await deleteNoteServices(id, authToken);
     setNoteList(response);
   };
-  console.log(noteList);
 
   return (
     <NoteContext.Provider

@@ -15,7 +15,7 @@ function MainPage({ page }) {
         <nav>
           <NavBar />
         </nav>
-        <Modal />
+
         <main>
           <div className="mainPageContent">
             <div>
