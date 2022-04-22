@@ -14,7 +14,6 @@ function Archive() {
       Archive
       <div className="all-notes">
         {archiveList.map((item) => {
-          console.log("2", item);
           return (
             <div>
               <div
