@@ -2,7 +2,7 @@ import React from "react";
 import { useNote } from "../../Contexts/Note-context";
 import UnarchiveIcon from "@mui/icons-material/Unarchive";
 import { useAuth } from "../../Contexts/Auth-context";
-import moment from "moment";
+// import moment from "moment";
 
 function Archive() {
   const { auth } = useAuth();
@@ -28,7 +28,7 @@ function Archive() {
                 <p className="note-descreption">{item.descreption}</p>
 
                 <div className="note-footer">
-                  {moment(item.createdAt).format("DD/MM/YYYY, h:mm a")}
+                  {/* {moment(item.createdAt).format("DD/MM/YYYY, h:mm a")} */}
 
                   <span
                     onClick={() =>
