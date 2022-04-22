@@ -131,33 +131,33 @@ function NewNote() {
                 {showPalette && (
                   <div className="colorPalette">
                     <button
-                      onClick={() => updateColor("red")}
-                      style={{ backgroundColor: "red" }}
+                      onClick={() => updateColor("#B4FF9F")}
+                      style={{ backgroundColor: "#B4FF9F" }}
                       className="colorPaletteBtn"
                     ></button>
                     <button
-                      onClick={() => updateColor("violet")}
-                      style={{ backgroundColor: "violet" }}
+                      onClick={() => updateColor("#F9FFA4")}
+                      style={{ backgroundColor: "#F9FFA4" }}
                       className="colorPaletteBtn"
                     ></button>
                     <button
-                      onClick={() => updateColor("yellow")}
-                      style={{ backgroundColor: "yellow" }}
+                      onClick={() => updateColor("#A1E3D8")}
+                      style={{ backgroundColor: "#A1E3D8" }}
                       className="colorPaletteBtn"
                     ></button>
                     <button
-                      onClick={() => updateColor("blue")}
-                      style={{ backgroundColor: "blue" }}
+                      onClick={() => updateColor("#FAF5E4")}
+                      style={{ backgroundColor: "#FAF5E4" }}
                       className="colorPaletteBtn"
                     ></button>
                     <button
-                      onClick={() => updateColor("orange")}
-                      style={{ backgroundColor: "orange" }}
+                      onClick={() => updateColor("#D7A86E")}
+                      style={{ backgroundColor: "#D7A86E" }}
                       className="colorPaletteBtn"
                     ></button>
                     <button
-                      onClick={() => updateColor("green")}
-                      style={{ backgroundColor: "green" }}
+                      onClick={() => updateColor("#EEEEEE")}
+                      style={{ backgroundColor: "#EEEEEE" }}
                       className="colorPaletteBtn"
                     ></button>
                   </div>

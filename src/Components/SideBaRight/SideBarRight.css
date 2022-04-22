@@ -10,6 +10,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--background-color);
+  color: var(--color);
 }
 .main-taks span {
   color: var(--color);

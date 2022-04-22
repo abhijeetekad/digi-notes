@@ -141,42 +141,62 @@ const Modal = ({
                       <button
                         onClick={() => {
                           setUpdatedNote({
-                            noteColor: "red",
+                            noteColor: "#B4FF9F",
                           });
                         }}
                         // onClick={() => updateColor("red")}
-                        style={{ backgroundColor: "red" }}
+                        style={{ backgroundColor: "#B4FF9F" }}
                         className="colorPaletteBtn"
                       ></button>
                       <button
                         onClick={() => {
                           setUpdatedNote({
                             ...updatedNote,
-                            noteColor: "violet",
+                            noteColor: "#F9FFA4",
                           });
                         }}
                         // onClick={() => updateColor("violet")}
-                        style={{ backgroundColor: "violet" }}
+                        style={{ backgroundColor: "#F9FFA4" }}
                         className="colorPaletteBtn"
                       ></button>
                       <button
-                        onClick={() => updateColor("yellow")}
-                        style={{ backgroundColor: "yellow" }}
+                        onClick={() => {
+                          setUpdatedNote({
+                            ...updatedNote,
+                            noteColor: "#A1E3D8",
+                          });
+                        }}
+                        style={{ backgroundColor: "#A1E3D8" }}
                         className="colorPaletteBtn"
                       ></button>
                       <button
-                        onClick={() => updateColor("blue")}
-                        style={{ backgroundColor: "blue" }}
+                        onClick={() => {
+                          setUpdatedNote({
+                            ...updatedNote,
+                            noteColor: "#FAF5E4",
+                          });
+                        }}
+                        style={{ backgroundColor: "#FAF5E4" }}
                         className="colorPaletteBtn"
                       ></button>
                       <button
-                        onClick={() => updateColor("orange")}
-                        style={{ backgroundColor: "orange" }}
+                        onClick={() => {
+                          setUpdatedNote({
+                            ...updatedNote,
+                            noteColor: "#D7A86E",
+                          });
+                        }}
+                        style={{ backgroundColor: "#D7A86E" }}
                         className="colorPaletteBtn"
                       ></button>
                       <button
-                        onClick={() => updateColor("green")}
-                        style={{ backgroundColor: "green" }}
+                        onClick={() => {
+                          setUpdatedNote({
+                            ...updatedNote,
+                            noteColor: "#EEEEEE",
+                          });
+                        }}
+                        style={{ backgroundColor: "#EEEEEE" }}
                         className="colorPaletteBtn"
                       ></button>
                     </div>
