@@ -2,7 +2,7 @@ import React from "react";
 import { useNote } from "../../Contexts/Note-context";
 import RestoreFromTrashIcon from "@mui/icons-material/RestoreFromTrash";
 import { useAuth } from "../../Contexts/Auth-context";
-import moment from "moment";
+// import moment from "moment";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 function Trash() {
@@ -36,7 +36,7 @@ function Trash() {
                   <p className="note-descreption">{item.descreption}</p>
 
                   <div className="note-footer">
-                    {moment(item.createdAt).format("DD/MM/YYYY, h:mm a")}
+                    {/* {moment(item.createdAt).format("DD/MM/YYYY, h:mm a")} */}
 
                     <span
                       onClick={() =>
