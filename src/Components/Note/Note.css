@@ -80,8 +80,7 @@
 }
 .note-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 0.5rem;
 }
 .ColorLensIcon {
   position: relative;

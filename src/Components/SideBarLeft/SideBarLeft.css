@@ -14,3 +14,15 @@
   background-color: var(--background-color);
   color: var(--color);
 }
+.main-taks span {
+  color: var(--color);
+  display: block;
+  width: 100%;
+  line-height: 4rem;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: 0.5s;
+  transition-property: background;
+  font-size: 18px;
+  font-weight: 600;
+}

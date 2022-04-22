@@ -12,17 +12,21 @@ function NewNote() {
   const [isExtended, setExtended] = useState(false);
   const [tempNote, setTeampNote] = useState(noteState);
 
-  // const [showPalette, setShowPallete] = useState(false);
-  // const paletteModel = () => {
-  //   setShowPallete(!showPalette);
-  // };
+  const [showPalette, setShowPallete] = useState(false);
+  const paletteModel = () => {
+    setShowPallete(!showPalette);
+  };
   const addNoteHandler = async (authToken) => {
     const notes = await addNoteService(authToken, {
       ...noteState,
+      createdAt: new Date(),
     });
     setNoteList(notes);
     dispatchNote({ type: "CLEAR_FIELDS" });
     setTeampNote("");
+  };
+  const updateColor = (color) => {
+    dispatchNote({ type: "NOTE_COLOR", payload: color });
   };
 
   return (
@@ -76,20 +80,38 @@ function NewNote() {
 
         {isExtended && (
           <div className="form-label">
-            {/* <select required className="form-details">
-              {priority.map((item) => (
+            <select
+              onChange={(e) => {
+                dispatchNote({
+                  type: "SELECTED_NOTE",
+                  payload: e.target.value,
+                });
+              }}
+              required
+              className="form-details"
+            >
+              {noteState.label.map((item) => (
                 <option required value={item}>
                   {item}
                 </option>
               ))}
             </select>
-            <select required className="form-details">
-              {newArrLabel.map((item) => (
+            <select
+              onChange={(e) => {
+                dispatchNote({
+                  type: "SELECTED_PRIORITY",
+                  payload: e.target.value,
+                });
+              }}
+              required
+              className="form-details"
+            >
+              {noteState.priority.map((item) => (
                 <option required value={item}>
                   {item}
                 </option>
               ))}
-            </select> */}
+            </select>
 
             {/* <input
               className="form-details"
@@ -99,45 +121,48 @@ function NewNote() {
             /> */}
 
             <div className="ColorLensIcon">
-              <span style={{ color: "black" }} onClick>
+              <span
+                style={{ color: "black" }}
+                onClick={() => paletteModel((showPalette) => !showPalette)}
+              >
                 <ColorLensIcon />
               </span>
-              {/* <div className="palette">
+              <div className="palette">
                 {showPalette && (
                   <div className="colorPalette">
                     <button
-                      onClick
+                      onClick={() => updateColor("#B4FF9F")}
+                      style={{ backgroundColor: "#B4FF9F" }}
                       className="colorPaletteBtn"
-                      style={{ backgroundColor: "#ecdbff" }}
                     ></button>
                     <button
-                      onClick
+                      onClick={() => updateColor("#F9FFA4")}
+                      style={{ backgroundColor: "#F9FFA4" }}
                       className="colorPaletteBtn"
-                      style={{ backgroundColor: "#dcffe3" }}
                     ></button>
                     <button
-                      onClick
+                      onClick={() => updateColor("#A1E3D8")}
+                      style={{ backgroundColor: "#A1E3D8" }}
                       className="colorPaletteBtn"
-                      style={{ backgroundColor: "#d9f2ff" }}
                     ></button>
                     <button
-                      onClick
+                      onClick={() => updateColor("#FAF5E4")}
+                      style={{ backgroundColor: "#FAF5E4" }}
                       className="colorPaletteBtn"
-                      style={{ backgroundColor: "#ffffd8" }}
                     ></button>
                     <button
-                      onClick
+                      onClick={() => updateColor("#D7A86E")}
+                      style={{ backgroundColor: "#D7A86E" }}
                       className="colorPaletteBtn"
-                      style={{ backgroundColor: "#ffd9fa" }}
                     ></button>
                     <button
-                      onClick
+                      onClick={() => updateColor("#EEEEEE")}
+                      style={{ backgroundColor: "#EEEEEE" }}
                       className="colorPaletteBtn"
-                      style={{ backgroundColor: "#ffffff" }}
                     ></button>
                   </div>
                 )}
-              </div> */}
+              </div>
             </div>
           </div>
         )}

@@ -1,4 +1,5 @@
 import { addNoteToArchive } from "../Services/NotesServices/addNoteToArchive";
+import { deleteNoteServices } from "../Services/NotesServices/deleteNote";
 import { unarchiveNote } from "../Services/NotesServices/unarchiveNote";
 
 import { updateNoteServices } from "../Services/NotesServices/updateNoteServices";
@@ -12,6 +13,12 @@ const NoteReducer = (state, action) => {
       return { ...state, title: action.payload };
     case "NOTE_DESCREPTION":
       return { ...state, descreption: action.payload };
+    case "SELECTED_NOTE":
+      return { ...state, selectedLabel: action.payload };
+    case "SELECTED_PRIORITY":
+      return { ...state, selectedPriority: action.payload };
+    case "NOTE_COLOR":
+      return { ...state, noteColor: action.payload };
     case "CLEAR_FIELDS":
       return { ...state, title: "", descreption: "" };
   }
@@ -20,6 +27,12 @@ const initialValues = {
   title: "",
   descreption: "",
   notePinned: false,
+  trashNotes: false,
+  label: ["Work", "Home", "School"],
+  selectedLabel: "Work",
+  priority: ["High", "Medium", "Low"],
+  selectedPriority: "High",
+  noteColor: "red",
 };
 
 const NoteProvider = ({ children }) => {
@@ -41,7 +54,11 @@ const NoteProvider = ({ children }) => {
     setArchiveList(response.archives);
     setNoteList(response.notes);
   };
-  console.log(archiveList);
+  const deleteNoteHandler = async (id, authToken) => {
+    const response = await deleteNoteServices(id, authToken);
+    setNoteList(response);
+  };
+
   return (
     <NoteContext.Provider
       value={{
@@ -53,6 +70,7 @@ const NoteProvider = ({ children }) => {
         archiveNoteHandler,
         archiveList,
         unarchiveNoteHandler,
+        deleteNoteHandler,
       }}
     >
       {children}

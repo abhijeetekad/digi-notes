@@ -1,3 +1,4 @@
+import { Modal } from "../../Components/Modal/Modal";
 import React from "react";
 
 import { Footer } from "../../Components/Footer/Footer";
@@ -14,6 +15,7 @@ function MainPage({ page }) {
         <nav>
           <NavBar />
         </nav>
+
         <main>
           <div className="mainPageContent">
             <div>
