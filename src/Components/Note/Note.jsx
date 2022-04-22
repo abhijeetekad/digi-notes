@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PushPinIcon from "@mui/icons-material/PushPin";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ArchiveIcon from "@mui/icons-material/Archive";
-import moment from "moment";
+// import moment from "moment";
 import "./Note.css";
 import { useNote } from "../../Contexts/Note-context";
 import { useAuth } from "../../Contexts/Auth-context";
@@ -71,7 +71,7 @@ function Note({ note }) {
         <p className="note-descreption">{descreption}</p>
 
         <div className="note-footer">
-          {moment(createdAt).format("DD/MM/YYYY, h:mm a")}
+          {/* {moment(createdAt).format("DD/MM/YYYY, h:mm a")} */}
           <span onClick={() => setIsModal((isModal) => !isModal)}>
             <EditIcon />
           </span>
